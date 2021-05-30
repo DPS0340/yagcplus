@@ -28,10 +28,7 @@ GarbageCollector::operator=(const GarbageCollector &collector) {
 
 const int GarbageCollector::find(const GarbageObject &obj) {
     for (int i = 0, size = objects.size(); i < size; i++) {
-        // std::cout << "obj: " << obj.ptr << "\n"
-        //           << "object: " << objects[i].ptr << "\n";
         if (obj == objects[i]) {
-            // std::cout << "MATCH!\n";
             return i;
         }
     }
@@ -39,7 +36,6 @@ const int GarbageCollector::find(const GarbageObject &obj) {
 }
 
 const bool GarbageCollector::free(const GarbageObject &obj) {
-    std::cout << "FIND: " << find(obj) << "\n";
     const int index = find(obj);
     if (index == -1) {
         return false;
@@ -82,7 +78,6 @@ void GarbageObject::free() {
     explicitDelete();
     std::free(ptr);
     std::free(refCount);
-    std::cout << "object counts: " << collector.getObjectCounts() << "\n";
 }
 GarbageObject::~GarbageObject() {
     const int index = collector.find(*this);
@@ -90,7 +85,6 @@ GarbageObject::~GarbageObject() {
         return;
     }
     **refCount -= 1;
-    std::cout << "Ref count changed: " << **refCount << "\n";
     if (**refCount == 0) {
         this->free();
     }
