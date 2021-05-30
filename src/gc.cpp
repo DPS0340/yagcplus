@@ -14,7 +14,7 @@ GarbageCollector::GarbageCollector(std::vector<GarbageObject> &objects)
 const GarbageObject &GarbageCollector::alloc(const size_t size) {
     objects.push_back(GarbageObject(*this, size));
     auto &result = objects.back();
-    **result.refCount = 1;
+    **result.refCount = 0;
     return result;
 }
 
