@@ -9,7 +9,7 @@ void go() {
 
     for (int i = 0; i < loop; i++) {
         auto newObject = gc.alloc(sizeof(int));
-        std::cout << "ref Count " << **newObject.refCount << "\n";
+        std::cout << "ref Count " << *newObject.refCount << "\n";
     }
 }
 

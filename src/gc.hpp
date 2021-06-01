@@ -24,8 +24,8 @@ class GarbageObject {
   public:
     GarbageCollector &collector;
 
-    void **ptr = nullptr;
-    int **refCount = nullptr;
+    void *ptr = nullptr;
+    int *refCount = nullptr;
     GarbageObject();
 
     GarbageObject(GarbageCollector &collector, const size_t size);
