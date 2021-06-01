@@ -3,15 +3,13 @@
 #include <vector>
 
 void go() {
-    std::vector<yagcplus::GarbageObject> objects;
-    yagcplus::GarbageCollector gc(objects);
+    yagcplus::GarbageCollector gc;
     const int loop = 10;
     std::cout << "Running " << loop << " loop\n";
 
     for (int i = 0; i < loop; i++) {
         auto newObject = gc.alloc(sizeof(int));
         std::cout << "ref Count " << **newObject.refCount << "\n";
-        std::cout << "object counts: " << gc.getObjectCounts() << "\n";
     }
 }
 

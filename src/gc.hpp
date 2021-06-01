@@ -16,17 +16,8 @@ class GarbageObject;
 class GarbageCollector {
   private:
   public:
-    std::vector<GarbageObject> &objects;
-
-    GarbageCollector(std::vector<GarbageObject> &objects);
-
-    GarbageCollector(const GarbageCollector &collector);
-    GarbageCollector &operator=(const GarbageCollector &obj);
-
-    const GarbageObject &alloc(const size_t size);
-    const bool free(const GarbageObject &garbage);
-    const int find(const GarbageObject &obj);
-    const int getObjectCounts();
+    GarbageCollector();
+    GarbageObject alloc(const size_t size);
 };
 class GarbageObject {
   private:
@@ -42,9 +33,8 @@ class GarbageObject {
     GarbageObject &operator=(const GarbageObject &obj);
     ~GarbageObject();
 
-    void free();
     bool operator==(const GarbageObject &rhs) const;
-    void explicitDelete();
+    void free();
     void *getPointer();
 };
 
